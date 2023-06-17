@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <form action="/update-user" method="POST">
+        <div>
+            <b>Nhập thông tin vào đây</b>
+        </div>
+        <div>
+            <%= JSON.stringify(dataUser) %>
+            <label >Username</label>
+            <input type="text" name = "username" value="<%= dataUser.username %>"/>
+        </div>
+        <div>
+            <label >Pass</label>
+            <input type="text" name = "pass" value="<%= dataUser.pass %>"/>
+        </div>
+        <input type="text" name = "id" hidden value="<%= dataUser.id %>"/>
+        <div>
+            <button type="submit">Cập Nhật</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Hello Quoc Bao ejs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>password</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= dataUser.length%>
+                <% for(let i = 0;i < dataUser.length;i++){ %>
+                <tr>
+                    <td><%= dataUser[i].id  %></td>
+                    <td><%= dataUser[i].username  %></td>
+                    <td><%= dataUser[i].pass  %></td>
+                    <td>
+                        
+                        <button type = "button"><a href="/detail/user/<%= dataUser[i].id %>" style="text-decoration: none;">Detail</a></button>
+                        
+                        <form action="/edit-user/<%= dataUser[i].id %>" method="GET">
+                            <button type = "submit">Edit</button>
+                        </form>
+
+                        <form action="/delete-user" method="POST">
+                            <input type = "text" hidden value="<%= dataUser[i].id %>" name = "id"/>
+                            <button type = "submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+      </table>
+      <form action="/create-user" method="POST">
+        <div>
+            <b>Nhập thông tin vào đây</b>
+        </div>
+        <div>
+            <label >Username</label>
+            <input type="text" name = "username"/>
+        </div>
+        <div>
+            <label >Pass</label>
+            <input type="password" name = "pass"/>
+        </div>
+        <div>
+            <button type="submit">Cập Nhật</button>
+        </div>
+      </form>
+</body>
+</html>
